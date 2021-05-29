@@ -1,4 +1,7 @@
 export interface Practitioner {
+    resourceType: string,
+    id: string,
+    text: StandardText,
     identifier?: Identifier[],
     active?: boolean,
     name?: HumanName[],
@@ -100,4 +103,9 @@ export interface Reference {
     type?: string,
     identifier?: Identifier,
     display?: string
+}
+
+export interface StandardText {
+    status: string,
+    div: string
 }

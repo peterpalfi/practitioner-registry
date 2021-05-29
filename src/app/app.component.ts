@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Practitioner } from './models/practitioner';
+import { Practitioner } from './shared/models/practitioner';
+import { AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,23 @@ export class AppComponent {
 
   practitionerExample: Practitioner
 
-  constructor() {
+  saveData() {
+    this.afs.collection("Practitioners").add(this.practitionerExample).then(res => {
+      console.log("save successful", res);
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  readData() {
+    this.afs.collection("Practitioners", ref => ref.where('birthDate', '<', '2008').orderBy('birthDate', 'asc').orderBy('id', 'desc')).get().subscribe(res => {
+      res.docs.forEach(el => {
+        console.log(el.data());
+      })
+    })
+  }
+
+  constructor(private afs: AngularFirestore) {
     this.practitionerExample = {
       "resourceType": "Practitioner",
       "id": "example",

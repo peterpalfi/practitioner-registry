@@ -1,14 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { DashboardComponent } from './dashboard.component';
 
-const routes: Routes = [{ 
-  path: '', 
-  component: DashboardComponent, 
-  data: { title: 'Dashboard - PractitionerRegistry' }, 
-  canActivate: [AuthGuard]
-}];
+const routes: Routes = [{ path: '', component: DashboardComponent, data: { title: 'Dashboard - PractitionerRegistry' } }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

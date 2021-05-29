@@ -1,4 +1,8 @@
-<mat-form-field>
-    <button mat-raised-button>Cancel</button>
-    <button mat-raised-button (click)="deleteEntry()">Delete</button>
-</mat-form-field>
+<h3 mat-dialog-title>Delete Entity</h3>
+<div mat-dialog-content>
+    <h4>Are you sure to delete?</h4>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="secondary" mat-dialog-close>Cancel</button>
+<button mat-raised-button color="warn" (click)="deleteEntry()">Delete</button>
+</div>

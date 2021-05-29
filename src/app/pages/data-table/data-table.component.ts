@@ -13,7 +13,7 @@ import { DataDeleteComponent } from '../data-delete/data-delete.component';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements AfterViewInit {
-  displayedColumns = ['active', 'edit', 'delete'];
+  displayedColumns = ['name', 'contact', 'active', 'actions'];
   //'Contact', 'Address', 'Gender', 'Birth Date', 'Qualification', 'Spoken Language'
   dataSource = new MatTableDataSource<any>();
 
@@ -25,25 +25,24 @@ export class DataTableComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.service.get("Practitioners").subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
-    })
+    });
   }
 
   openEditDialog(data: any) {
     const dialogRef = this.dialog.open(DataAddEditComponent, {
-      width: '350px',
+      width: '200px',
       data: data
     });
   }
 
   openDeleteDialog(data: any) {
     const dialogRef = this.dialog.open(DataDeleteComponent, {
-      width: '350px',
+      width: '300px',
       data: data
     });
   }
 
   addPractitioner() {
-    
   }
 
   trackByUid(index: any, item: any) {

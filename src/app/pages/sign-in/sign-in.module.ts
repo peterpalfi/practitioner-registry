@@ -4,6 +4,11 @@ import { CommonModule } from '@angular/common';
 import { SignInRoutingModule } from './sign-in-routing.module';
 import { SignInComponent } from './sign-in.component';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -11,7 +16,13 @@ import { SignInComponent } from './sign-in.component';
   ],
   imports: [
     CommonModule,
-    SignInRoutingModule
+    SignInRoutingModule,
+    MatCardModule, 
+    MatButtonModule, 
+    FormsModule, 
+    ReactiveFormsModule, 
+    MatFormFieldModule, 
+    MatInputModule
   ]
 })
 export class SignInModule { }

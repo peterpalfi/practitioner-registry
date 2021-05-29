@@ -6,11 +6,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DataAddEditComponent } from '../data-add-edit/data-add-edit.component';
+import { DataDeleteComponent } from '../data-delete/data-delete.component';
 
 
 @NgModule({
   declarations: [
-    DataTableComponent
+    DataTableComponent,
+    DataAddEditComponent,
+    DataDeleteComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +24,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     MatButtonModule
   ],
-  exports: [DataTableComponent]
+  exports: [
+    DataTableComponent,
+    DataAddEditComponent,
+    DataDeleteComponent
+  ],
+  entryComponents: [
+    DataAddEditComponent,
+    DataDeleteComponent
+  ]
 })
 export class DataTableModule { }

@@ -9,7 +9,10 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [NavbarComponent],
   imports: [
-    CommonModule, MatToolbarModule, MatButtonModule, RouterModule
+    CommonModule, 
+    MatToolbarModule, 
+    MatButtonModule, 
+    RouterModule
   ],
   exports: [NavbarComponent]
 })

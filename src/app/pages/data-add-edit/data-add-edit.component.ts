@@ -24,8 +24,8 @@ export class DataAddEditComponent {
     firstName: new FormControl(this.data?.name[0].given[0]),
     lastName: new FormControl(this.data?.name[0].family),
     gender: new FormControl(this.data?.gender),
-    birthDate: new FormControl(this.data?.birthDate),
-    telecom: new FormControl(this.data?.telecom == undefined ? '' : this.data?.telecom[0].text),
+    birthDate: new FormControl(this.data?.birthDate == undefined ? '' : new Date(this.data?.birthDate.toDate())),
+    telecom: new FormControl(this.data?.telecom == undefined ? '' : this.data?.telecom[0].value),
     address: new FormControl(this.data?.address == undefined ? '' : this.data?.address[0].city),
     qualification: new FormControl(this.data?.qualification == undefined ? '' : this.data?.qualification[0].code.text),
   });

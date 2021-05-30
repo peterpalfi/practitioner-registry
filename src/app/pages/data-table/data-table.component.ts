@@ -7,6 +7,7 @@ import { FbBaseService } from 'src/app/services/fb-base/fb-base.service';
 import { Practitioner } from 'src/app/shared/models/practitioner';
 import { DataAddEditComponent } from '../data-add-edit/data-add-edit.component';
 import { DataDeleteComponent } from '../data-delete/data-delete.component';
+import * as faker from 'faker';
 
 @Component({
   selector: 'app-data-table',
@@ -49,7 +50,33 @@ export class DataTableComponent implements AfterViewInit {
     }
   }
 
-  addDummyPractitioner() {
+  createDummyPractitioner(): Practitioner {
 
+    /* let name = new HumanName(this.practitionerForm.value.lastName, 
+      [this.practitionerForm.value.firstName]);
+    let assignableName = Object.assign({}, name);
+
+    let telecom = new ContactPoint(this.practitionerForm.value.telecom);
+    let assignableTelecom = Object.assign({}, telecom);
+
+    let address = new Address(this.practitionerForm.value.address);
+    let assignableAddress = Object.assign({}, address);
+
+    let gender = this.practitionerForm.value.gender;
+    let birthDate = this.practitionerForm.value.birthDate;
+
+    let qualificationCode = new CodeableConcept(this.practitionerForm.value.qualification);
+    let assignableQualificationCode = Object.assign({}, qualificationCode);
+    let qualification = new BackboneElement(assignableQualificationCode);
+    let assignableQualification = Object.assign({}, qualification); */
+
+    return new Practitioner(
+      true,
+
+    );
+  }
+
+  addDummyPractitioner() {
+    console.log(faker.name.findName());
   }
 }

@@ -68,8 +68,10 @@ export class DataAddEditComponent {
       [assignableQualification] 
       );
 
-    console.log(this.practitionerForm.value);
-    this.service.add("Practitioners", Object.assign({}, practitioner));
+    if (this.data == undefined) {
+      this.service.add("Practitioners", Object.assign({}, practitioner));
+    } else {
+      this.service.update("Practitioners", this.data.id, Object.assign({}, practitioner));
+    }
   }
-
 }

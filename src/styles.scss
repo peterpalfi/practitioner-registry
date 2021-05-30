@@ -15,9 +15,17 @@ h1 {
   align-items: center;
   justify-content: center;
   height: stretch;
-  margin-top: 2%;;
 }
 
 .button-space {
   margin-left: 35px !important;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.margins {
+  margin-top: 2%;
+  margin-bottom: 3%;
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FbBaseService } from 'src/app/services/fb-base/fb-base.service';
 import { Practitioner } from 'src/app/shared/models/practitioner';
 
@@ -10,14 +10,15 @@ import { Practitioner } from 'src/app/shared/models/practitioner';
 })
 export class DataDeleteComponent {
 
-  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataDeleteComponent>) { }
+  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataDeleteComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   deleteEntry() {
-    //this.service.delete("Practitioners", "");
+    console.log(this.data.id);
+    this.service.delete("Practitioners", this.data.id);
     this.dialogRef.close();
   }
 

@@ -42,11 +42,11 @@ export class DataTableComponent implements AfterViewInit {
     });
   }
 
-  addPractitioner() {
+  openAddDialog() {
+    this.dialog.open(DataAddEditComponent);
   }
 
-  trackByUid(index: any, item: any) {
-    return item.uid;
-  }
+  addDummyPractitioner() {
 
+  }
 }

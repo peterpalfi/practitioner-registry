@@ -1,1 +1,51 @@
-<p>data-add-edit works!</p>
+<div class="centering">
+      <form id="add-form" [formGroup]="practitionerForm" (ngSubmit)="saveData()">
+        <h3>Add or Edit Practitioner</h3>
+        <mat-form-field class="max-width">
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" name="firstName" placeholder="First Name" required MatFormFieldControl="firstName">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="max-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" name="lastName" placeholder="Last Name" required formControlName="lastName">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Gender</mat-label>
+          <mat-select [(value)]="selectedGender">
+            <mat-option *ngFor="let gender of genderData" value="{{gender.value}}">{{gender.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Birthdate</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="max-width">
+          <mat-label>Contact Info</mat-label>
+          <input matInput type="text" name="telecom" placeholder="Contact Info" formControlName="telecom">
+        </mat-form-field>
+        <mat-form-field class="max-width">
+          <mat-label>Address - City</mat-label>
+          <input matInput type="text" name="address" placeholder="City" formControlName="address">
+        </mat-form-field>
+        <mat-form-field class="max-width">
+          <mat-label>Qualification</mat-label>
+          <input matInput type="text" name="qualification" placeholder="qualification" required formControlName="qualification">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Active</mat-label>
+          <mat-select [(value)]="activeSelected">
+            <mat-option value="yes">Yes</mat-option>
+            <mat-option value="no">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="secondary" mat-dialog-close>Cancel</button>
+        <button class="button-space" type="submit" mat-raised-button color="primary">Submit</button>
+      </form>
+  </div>

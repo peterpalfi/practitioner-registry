@@ -67,6 +67,8 @@ export class DataAddEditComponent {
       birthDate,
       [assignableQualification] 
       );
+
+    console.log(this.practitionerForm.value);
     this.service.add("Practitioners", Object.assign({}, practitioner));
   }
 

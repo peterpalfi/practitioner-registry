@@ -13,14 +13,14 @@
         <br>
         <mat-form-field appearance="fill">
           <mat-label>Gender</mat-label>
-          <mat-select [(value)]="selectedGender">
+          <mat-select [(value)]="selectedGender" formControlName="gender">
             <mat-option *ngFor="let gender of genderData" value="{{gender.value}}">{{gender.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
           <mat-label>Birthdate</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input matInput [matDatepicker]="picker" formControlName="birthDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

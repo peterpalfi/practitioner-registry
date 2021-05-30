@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { FbBaseService } from 'src/app/services/fb-base/fb-base.service';
-import { Practitioner } from 'src/app/shared/models/practitioner';
+import { Address, BackboneElement, CodeableConcept, ContactPoint, HumanName, Practitioner } from 'src/app/shared/models/practitioner';
 import { DataAddEditComponent } from '../data-add-edit/data-add-edit.component';
 import { DataDeleteComponent } from '../data-delete/data-delete.component';
 import * as faker from 'faker';
@@ -51,32 +51,33 @@ export class DataTableComponent implements AfterViewInit {
   }
 
   createDummyPractitioner(): Practitioner {
-
-    /* let name = new HumanName(this.practitionerForm.value.lastName, 
-      [this.practitionerForm.value.firstName]);
+     let name = new HumanName(faker.name.firstName(), 
+      [faker.name.lastName()]);
     let assignableName = Object.assign({}, name);
 
-    let telecom = new ContactPoint(this.practitionerForm.value.telecom);
+    let telecom = new ContactPoint(faker.phone.phoneNumber());
     let assignableTelecom = Object.assign({}, telecom);
 
-    let address = new Address(this.practitionerForm.value.address);
+    let address = new Address(faker.address.city());
     let assignableAddress = Object.assign({}, address);
-
-    let gender = this.practitionerForm.value.gender;
-    let birthDate = this.practitionerForm.value.birthDate;
-
-    let qualificationCode = new CodeableConcept(this.practitionerForm.value.qualification);
+    
+    let qualificationCode = new CodeableConcept("nurse");
     let assignableQualificationCode = Object.assign({}, qualificationCode);
     let qualification = new BackboneElement(assignableQualificationCode);
-    let assignableQualification = Object.assign({}, qualification); */
+    let assignableQualification = Object.assign({}, qualification);
 
     return new Practitioner(
       true,
-
+      [assignableName],
+      [assignableTelecom],
+      [assignableAddress],
+      "unknown",
+      '',
+      [assignableQualification]
     );
   }
 
   addDummyPractitioner() {
-    console.log(faker.name.findName());
+    this.service.add("Practitioners", Object.assign({}, this.createDummyPractitioner()));
   }
 }

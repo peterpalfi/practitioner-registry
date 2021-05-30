@@ -33,12 +33,6 @@ export class DataTableComponent implements AfterViewInit {
     });
   }
 
-  openEditDialog(data: any) {
-    const dialogRef = this.dialog.open(DataAddEditComponent, {
-      data: data
-    });
-  }
-
   openDeleteDialog(data: any) {
     const dialogRef = this.dialog.open(DataDeleteComponent, {
       width: '300px',

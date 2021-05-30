@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -14,6 +15,17 @@ export class NavbarComponent {
   constructor(private router: Router, private authService: AuthService) { 
     authService.authStatus.subscribe(res =>
     this.loginState = res);
+
+    this.router.events
+    .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
+    .subscribe(event => {
+      if (
+        event.id === 1 &&
+        event.url === event.urlAfterRedirects 
+      ) {
+       this.loginState = authService.authenticated();
+      }
+    })
   }
 
   logout(): void {

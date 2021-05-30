@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { FbBaseService } from './fb-base.service';
 
 describe('FbBaseService', () => {
-  let service: FbBaseService;
+  let service: FbBaseService<any>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

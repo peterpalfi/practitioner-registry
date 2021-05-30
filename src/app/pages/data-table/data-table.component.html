@@ -56,7 +56,7 @@
             </td>
         </ng-container>
 
-        <ng-container matColumnDef="actions">
+        <ng-container *ngIf="!homeRoute" matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let practitioner">
                 <button mat-raised-button color="primary" (click)="openAddDialog(practitioner)">Edit</button>
@@ -67,7 +67,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
-<div class="centering margins">
+<div *ngIf="!homeRoute" class="centering margins">
     <button mat-raised-button color="accent" (click)="openAddDialog()">Add Practitioner</button>
     <button mat-raised-button class="button-space" color="accent" (click)="addDummyPractitioner()">Add Dummy Practitioner</button>
 </div>

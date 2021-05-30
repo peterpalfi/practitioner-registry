@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FbBaseService } from 'src/app/services/fb-base/fb-base.service';
-import { Practitioner } from 'src/app/shared/models/practitioner';
+import { Address, ContactPoint, HumanName, Practitioner , BackboneElement, CodeableConcept} from 'src/app/shared/models/practitioner';
 
 @Component({
   selector: 'app-data-add-edit',
@@ -30,14 +30,44 @@ export class DataAddEditComponent {
     qualification: new FormControl(this.data?.qualification == undefined ? '' : this.data?.qualification[0].code.text),
   });
 
-  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataAddEditComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataAddEditComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   saveData(): void {
-    console.log(this.data);
+    let active = this.practitionerForm.value.active;
+
+    let name = new HumanName(this.practitionerForm.value.lastName, 
+      [this.practitionerForm.value.firstName]);
+    let assignableName = Object.assign({}, name);
+
+    let telecom = new ContactPoint(this.practitionerForm.value.telecom);
+    let assignableTelecom = Object.assign({}, telecom);
+
+    let address = new Address(this.practitionerForm.value.address);
+    let assignableAddress = Object.assign({}, address);
+
+    let gender = this.practitionerForm.value.gender;
+    let birthDate = this.practitionerForm.value.birthDate;
+
+    let qualificationCode = new CodeableConcept(this.practitionerForm.value.qualification);
+    let assignableQualificationCode = Object.assign({}, qualificationCode);
+    let qualification = new BackboneElement(assignableQualificationCode);
+    let assignableQualification = Object.assign({}, qualification);
+
+    let practitioner = new Practitioner(
+      active, 
+      [assignableName], 
+      [assignableTelecom], 
+      [assignableAddress], 
+      gender, 
+      birthDate,
+      [assignableQualification] 
+      );
+    this.service.add("Practitioners", Object.assign({}, practitioner));
   }
 
 }

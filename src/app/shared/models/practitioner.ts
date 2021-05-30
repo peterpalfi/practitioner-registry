@@ -1,8 +1,8 @@
 export class Practitioner {
     resourceType: string;
     id?: string;
-    text?: StandardText;
-    identifier?: Identifier[];
+    //text?: StandardText;
+    //identifier?: Identifier[];
     active?: boolean;
     name?: HumanName[];
     telecom?: ContactPoint[];
@@ -10,35 +10,26 @@ export class Practitioner {
     //gender?: "male" | "female" | "other" | "unknown";
     gender?: string;
     birthDate?: string;
-    photo?: Attachment[];
+    //photo?: Attachment[];
     qualification?: BackboneElement[];
-    communication?: CodeableConcept[];
+    //communication?: CodeableConcept[];
 
     constructor(
-        id?: string,
-        text?: StandardText,
-        identifier?: Identifier[],
         active?: boolean,
         name?: HumanName[],
         telecom?: ContactPoint[],
         address?: Address[],
         gender?: string,
         birthDate?: string,
-        photo?: Attachment[],
-        qualification?: BackboneElement[],
-        communication?: CodeableConcept[]
+        qualification?: BackboneElement[]
         ) {
         this.resourceType = "Practitioner";
-        this.text = text;
-        this.identifier = identifier;
         this.active = active;
         this.name = name;
         this.telecom = telecom;
         this.address = address;
         this.birthDate = birthDate;
-        this.photo = photo;
         this.qualification = qualification;
-        this.communication = communication;
         this.gender = gender;
     }
 }
@@ -65,8 +56,7 @@ export class CodeableConcept {
     coding?: Coding[];
     text?: string;
 
-    constructor(coding?: Coding[], text?: string) {
-        this.coding = coding;
+    constructor(text?: string) {
         this.text = text;
     }
 }
@@ -106,13 +96,9 @@ export class HumanName {
     suffix?: string[];
     period?: Period;
 
-    constructor(text?: string, family?: string, given?: string[], prefix?: string[], suffix?: string[], period?: Period) {
-        this.text = text;
+    constructor(family?: string, given?: string[]) {
         this.family = family;
         this.given = given;
-        this.prefix = prefix;
-        this.suffix = suffix;
-        this.period = period;
     }
 }
 
@@ -123,12 +109,10 @@ export class ContactPoint {
     rank?: number;
     period?: Period;
 
-    constructor(value?: string, rank?: number, period?: Period) {
+    constructor(value?: string) {
         this.system = "phone";
         this.value = value;
         this.use = "home";
-        this.rank = rank;
-        this.period = period;
     }
 
 }
@@ -145,17 +129,10 @@ export class Address {
     country?: string;
     period?: Period;
 
-    constructor(text?: string, line?: string[], city?: string, district?: string, state?: string, postalCode?: string, country?: string, period?: Period) {
+    constructor(city?: string) {
         this.use = "home";
         this.type = "both";
-        this.text = text;
-        this.line = line;
         this.city = city;
-        this.district = district;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.country = country;
-        this.period = period;
     }
 }
 
@@ -188,12 +165,8 @@ export class BackboneElement {
     period?: Period;
     issuer?: Reference
 
-    constructor(code: CodeableConcept, modifierExtension?: Extension[], identifier?: Identifier[], period?: Period, issuer?: Reference) {
-        this.modifierExtension = modifierExtension;
-        this.identifier = identifier;
+    constructor(code: CodeableConcept) {
         this.code = code;
-        this.period = period;
-        this.issuer = issuer;
     }
 }
 

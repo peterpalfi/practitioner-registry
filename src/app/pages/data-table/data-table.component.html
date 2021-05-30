@@ -49,7 +49,7 @@
         </ng-container>
 
         <ng-container matColumnDef="qualification">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Has Qualification </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Qualification </th>
             <td mat-cell *matCellDef="let practitioner">
                 <div *ngIf="practitioner.qualification[0].code.text; else elseBlock">{{ practitioner.qualification[0].code.text }}</div>
                 <ng-template #elseBlock>NA</ng-template>

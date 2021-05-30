@@ -19,25 +19,22 @@ export class DataAddEditComponent {
   selectedGender = "male";
   activeSelected = 'yes';
 
-  practitionerForm: FormGroup = new FormGroup({
-    active: new FormControl(),
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    gender: new FormControl(),
-    birthDate: new FormControl(),
-    telecom: new FormControl(),
-    address: new FormControl(),
-    qualification: new FormControl(),
+  practitionerForm: FormGroup = new FormGroup({    
+    active: new FormControl(this.data?.active),
+    firstName: new FormControl(this.data?.name[0].given[0]),
+    lastName: new FormControl(this.data?.name[0].family),
+    gender: new FormControl(this.data?.gender),
+    birthDate: new FormControl(this.data?.birthDate),
+    telecom: new FormControl(this.data?.telecom == undefined ? '' : this.data?.telecom[0].text),
+    address: new FormControl(this.data?.address == undefined ? '' : this.data?.address[0].city),
+    qualification: new FormControl(this.data?.qualification == undefined ? '' : this.data?.qualification[0].code.text),
   });
 
-  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataAddEditComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
+  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataAddEditComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+  console.log(data);
   }
 
-  saveData() {
-    console.log(this.practitionerForm.value.active);
+  onNoClick(): void {
     this.dialogRef.close();
   }
 

@@ -41,8 +41,24 @@ export class DataTableComponent implements AfterViewInit {
     });
   }
 
-  openAddDialog() {
-    this.dialog.open(DataAddEditComponent);
+  openAddDialog(data?: any) {
+    if (data === undefined) {
+      const dialogRef = this.dialog.open(DataAddEditComponent, {});
+    } else {
+      const dialogRef = this.dialog.open(DataAddEditComponent, {data: data});
+    }
+    
+    
+    /* dialogRef.afterClosed().subscribe(
+      (practitioner: Practitioner) => {
+        if (true) {
+          this.service.add("Practitioners", practitioner);
+        }
+      },
+      (err) => {
+        console.warn(err);
+      }
+    ); */
   }
 
   addDummyPractitioner() {

@@ -1,5 +1,5 @@
 <div class="centering">
-      <form class="form-width" [formGroup]="practitionerForm" (ngSubmit)="saveData()">
+      <form class="form-width" [formGroup]="practitionerForm">
         <h3>Add or Edit Practitioner</h3>
         <mat-form-field class="max-width">
           <mat-label>First Name</mat-label>
@@ -26,7 +26,7 @@
         </mat-form-field>
         <br>
         <mat-form-field class="max-width">
-          <mat-label>Contact Info</mat-label>
+          <mat-label>Contact - Phone</mat-label>
           <input matInput type="text" name="telecom" placeholder="Contact Info" formControlName="telecom">
         </mat-form-field>
         <br>
@@ -43,6 +43,6 @@
         <mat-checkbox formControlName="active">Active</mat-checkbox>
         <br><br><br>
         <button mat-raised-button color="secondary" mat-dialog-close>Cancel</button>
-        <button class="button-space" type="submit" mat-raised-button color="primary">Submit</button>
+        <button class="button-space" [mat-dialog-close]="practitionerForm.value" type="submit" mat-raised-button color="primary">Submit</button>
       </form>
   </div>

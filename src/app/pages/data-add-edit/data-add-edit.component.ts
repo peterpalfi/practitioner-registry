@@ -30,12 +30,14 @@ export class DataAddEditComponent {
     qualification: new FormControl(this.data?.qualification == undefined ? '' : this.data?.qualification[0].code.text),
   });
 
-  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataAddEditComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
-  console.log(data);
-  }
+  constructor(private service: FbBaseService<Practitioner>, public dialogRef: MatDialogRef<DataAddEditComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  saveData(): void {
+    console.log(this.data);
   }
 
 }

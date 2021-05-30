@@ -42,12 +42,12 @@ export class DataTableComponent implements AfterViewInit {
   }
 
   openAddDialog(data?: any) {
+    let dialogRef;
     if (data === undefined) {
-      const dialogRef = this.dialog.open(DataAddEditComponent, {});
+      dialogRef = this.dialog.open(DataAddEditComponent, {});
     } else {
-      const dialogRef = this.dialog.open(DataAddEditComponent, {data: data});
+      dialogRef = this.dialog.open(DataAddEditComponent, {data: data});
     }
-    
     
     /* dialogRef.afterClosed().subscribe(
       (practitioner: Practitioner) => {

@@ -9,7 +9,12 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  loginState = false;
+
+  constructor(private router: Router, private authService: AuthService) { 
+    authService.authStatus.subscribe(res =>
+    this.loginState = res);
+  }
 
   logout(): void {
     this.authService.logout();

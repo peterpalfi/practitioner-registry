@@ -13,7 +13,7 @@ import { DataDeleteComponent } from '../data-delete/data-delete.component';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'gender', 'birthDate', 'contact', 'address', 'active', 'actions'];
+  displayedColumns: string[] = ['name', 'gender', 'birthDate', 'contact', 'address', 'qualification', 'active', 'actions'];
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatSort)

@@ -20,7 +20,6 @@ export class DataAddEditComponent {
   activeSelected = 'yes';
 
   practitionerForm: FormGroup = new FormGroup({
-    id: new FormControl(),
     active: new FormControl(),
     firstName: new FormControl(),
     lastName: new FormControl(),
@@ -38,7 +37,8 @@ export class DataAddEditComponent {
   }
 
   saveData() {
-    
+    console.log(this.practitionerForm.value.active);
+    this.dialogRef.close();
   }
 
 }

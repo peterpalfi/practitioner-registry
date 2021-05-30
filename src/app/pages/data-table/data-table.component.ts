@@ -30,7 +30,6 @@ export class DataTableComponent implements AfterViewInit {
 
   openEditDialog(data: any) {
     const dialogRef = this.dialog.open(DataAddEditComponent, {
-      width: '200px',
       data: data
     });
   }

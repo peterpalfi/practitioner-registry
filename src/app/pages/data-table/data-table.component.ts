@@ -13,8 +13,7 @@ import { DataDeleteComponent } from '../data-delete/data-delete.component';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements AfterViewInit {
-  displayedColumns = ['name', 'contact', 'active', 'actions'];
-  //'Contact', 'Address', 'Gender', 'Birth Date', 'Qualification', 'Spoken Language'
+  displayedColumns: string[] = ['id', 'name', 'gender', 'birthDate', 'contact', 'address', 'active', 'actions'];
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatSort)
@@ -25,6 +24,7 @@ export class DataTableComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.service.get("Practitioners").subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
     });
   }
 

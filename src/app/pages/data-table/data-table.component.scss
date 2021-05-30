@@ -3,7 +3,7 @@
 }
 
 table {
-    width: 70%;
+    min-width: 80%;
 }
 
 th.mat-header-cell {
@@ -14,4 +14,17 @@ th.mat-header-cell {
 td.mat-cell {
     text-align: center !important;
     padding: 1% 0;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+::ng-deep .mat-sort-header-container {
+    display:flex;
+    justify-content:center;
+}
+
+.bottom-margin {
+    margin-bottom: 3%;
 }

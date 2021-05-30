@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DataAddEditComponent } from '../data-add-edit/data-add-edit.component';
 import { DataDeleteComponent } from '../data-delete/data-delete.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DataDeleteComponent } from '../data-delete/data-delete.component';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSortModule
   ],
   exports: [
     DataTableComponent,
